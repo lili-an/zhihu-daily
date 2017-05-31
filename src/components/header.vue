@@ -1,9 +1,16 @@
 <template lang="html">
-<mu-appbar title="CM" class="appbar-fixed">
+<mu-appbar title="首页" class="appbar-fixed">
 <!-- <span>{{ count }}</span> -->
   <mu-icon-button icon='menu' slot="left" v-touch:tap="toggle"/>
-  <mu-icon-button icon='search' slot="right"/>
+  <mu-icon-button icon="search" slot="right"/>
+  <mu-icon-button icon="more_vert" slot="right"/>
 </mu-appbar>
+
+<!-- <mu-appbar title="首页" class="appbar-fixed">
+  <mu-icon-button icon="menu" slot="left" v-touch:tap="toggle"/>
+  <mu-icon-button icon="search" slot="right"/>
+  <mu-icon-button icon="more_vert" slot="right"/>
+</mu-appbar> -->
 </template>
 
 <script type="text/javascript">

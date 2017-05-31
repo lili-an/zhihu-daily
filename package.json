@@ -1,8 +1,8 @@
 {
-  "name": "vue-abc",
+  "name": "zhihu-daily",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "strong <wangxiaozhuang@clothesmake.com>",
+  "author": "strong",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "mint-ui": "^2.2.7",
     "muse-ui": "^2.0.0-rc.5",
     "vue": "^2.2.1",
     "vue-router": "^2.2.0",

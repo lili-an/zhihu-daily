@@ -25,12 +25,10 @@ const store = new Vuex.Store({
 	      context.commit('increment')
 	    },
 		loadMovieList: function({commit}) {
-			//621793299  565103184
-			axios.get('https://bird.ioliu.cn/netease?playlist_id=621793299')
-			.then(res => {
-                commit('SET_MOVIE_LIST', {list: res.data.result.tracks})
-                // state.loading = false
-            }).catch(err => console.log(err))
+			// axios.get('https://bird.ioliu.cn/netease?playlist_id=621793299')
+			// .then(res => {
+   //              commit('SET_MOVIE_LIST', {list: res.data.result.tracks})
+   //          }).catch(err => console.log(err))
 		},
 		changeFlag: function(context) {
 			context.commit('SET_FLAG')
