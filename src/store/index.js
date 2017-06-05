@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import { Toast } from 'mint-ui';
+// import * as getters from './getters'
+// import * as actions from './actions'
+// import mutations from './mutations'
 
 Vue.use(Vuex)
 
@@ -17,18 +21,23 @@ const store = new Vuex.Store({
 		topPopupMsg: '',
 		movieList: [],
 		users:{},
-		usersOff: true
+		usersOff: true,
+		active: false
 	},
 	actions: {
 		//获取数据 异步
 		increments (context) {
 	      context.commit('increment')
 	    },
+	    changeActive: function(context) {
+	    	context.commit('CHANGE_ACTIVE')
+	    },
 		loadMovieList: function({commit}) {
-			// axios.get('https://bird.ioliu.cn/netease?playlist_id=621793299')
-			// .then(res => {
-   //              commit('SET_MOVIE_LIST', {list: res.data.result.tracks})
-   //          }).catch(err => console.log(err))
+   				axios.get('https://zhihu-daily.leanapp.cn/api/v1/last-stories')
+				.then(res => {
+	                // console.log(res.data.STORIES.top_stories)
+	                commit('SET_MOVIE_LIST', {list: res.data.STORIES.top_stories})
+	            }).catch(err => console.log(err))
 		},
 		changeFlag: function(context) {
 			context.commit('SET_FLAG')
@@ -40,6 +49,14 @@ const store = new Vuex.Store({
 	mutations: {  //同步
 		increment (state) {
 	      state.count++
+	    },
+	    CHANGE_ACTIVE (state) {
+	    	state.active = !state.active
+	    	if(state.active) {
+	    		Toast('夜间模式');
+	    	}else {
+	    		Toast('白天模式');
+	    	}	    	
 	    },
 		SET_MOVIE_LIST: function(state, {list}) {
 			state.loading = true
@@ -74,6 +91,11 @@ const store = new Vuex.Store({
 
 export default store
 
-// store.commit('increment')
+//导出vuex的实例，其中包含state，mutations，getters，actions
 
-// console.log(store.state.count)
+// export default new Vuex.Store({
+//     state,
+//     mutations,
+//     getters,
+//     actions
+// })

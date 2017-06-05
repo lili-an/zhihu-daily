@@ -5,17 +5,34 @@
 		  <mu-paper class="demo-menu">
 		    <mu-menu desktop>
 		      <div v-if="usersOff == false">
-		    	<mu-float-button icon="account_circle" info class="demo-float-button"/>
+		    	登陆成功
 		      </div>
 		      <div v-else>
-		        <mu-float-button icon="add" secondary class="demo-float-button"/><br/>
+		        <div class="nav-left-top">
+		    		<div class="avater">
+		    			<!-- <img src="" alt=""> -->
+		    			<mu-icon-button icon="face" slot="left"/>
+		    			<div>请登录</div>		    			
+		    		</div>
+		    		<div class="_second">
+		    			<div class="_second-item">
+		    				<mu-icon-button icon="star" slot="left"/>
+		      				<div class="_my">我的收藏</div>
+		    			</div>
+		    			<div class="_second-item">
+		    				<mu-icon-button icon="file_download" slot="left"/>
+		      				<div class="_my">离线下载</div>
+		    			</div>
+		    		</div>
+		    	</div>
 		      </div>  	      
-		      <mu-menu-item title="set" afterText="⌘"/>
-		      <mu-divider />
-		      <mu-menu-item title="home" rightIcon="keyboard_arrow_right"/>
-		      <mu-menu-item title="customized" rightIcon="keyboard_arrow_right"/>
-		      <mu-menu-item title="share" rightIcon="keyboard_arrow_right"/>
-		      <mu-menu-item title="personal" rightIcon="keyboard_arrow_right"/>
+		      <div class="nav-left-home" @click="routrHome">
+		      	<mu-icon-button icon="home" slot="left"/>
+		      	<div class="_txt" slot="left">首页</div>
+		      </div>
+		      <!-- <mu-divider /> -->
+		      <!-- <mu-menu-item title="home" rightIcon="keyboard_arrow_right"/> -->
+		      <mu-menu-item :title="themesItem.name" rightIcon="add" v-for="(themesItem,index) in themesList" :key="themesItem.id" class="themes-item" @click="getOthers(themesItem.id)"/>
 		    </mu-menu>
 		  </mu-paper>
 		</div>
@@ -24,49 +41,107 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 export default {
-  data () {
-    return {
+	  data () {
+	    return {
+	    	themesList: []
+	    }
+	  },
+	  computed: {
+	    open () {
+	      return this.$store.state.open
+	    },
+	    docked () {
+	      return this.$store.state.docked
+	    },
+	    usersOff() {
+	      return this.$store.state.usersOff
+	    },
+	  },
+	  mounted() {
+	  	this.$nextTick(function() {
+	  		this.getThemesList();
+	  	})
+	  },
+	  methods: {
+	    toggle (flag) {    	
+			this.$store.dispatch('changeFlag')
+	    },
+	    getThemesList: function (){
+	        axios.get('https://zhihu-daily.leanapp.cn/api/v1/themes')
+	          .then(res => {
+	            this.themesList = res.data.THEMES.others;
+	          })
+	          .catch(err => console.log(err))
 
-    }
-  },
-  computed: {
-    open () {
-      return this.$store.state.open
-    },
-    docked () {
-      return this.$store.state.docked
-    },
-    usersOff() {
-      return this.$store.state.usersOff
-    },
-  },
-  mounted() {
-  	this.$nextTick(function() {
-  		// this.getState();
-  	})
-  },
-  methods: {
-    toggle (flag) {    	
-		this.$store.dispatch('changeFlag')
-    },
-  },
+	    },
+	    getOthers: function (id) {
+	    	if(this.$route.params.id !== id) {
+	          	 // window.location.reload();
+	          }  
+            this.$router.replace('/othersDetails/'+id)     	
+	    	this.$store.dispatch('changeFlag')
+	    },
+	    routrHome: function() {
+	    	this.$router.replace('/')
+	    	this.$store.dispatch('changeFlag')
+	    }
+	  },
  
 }
 </script>
 <style type="text/css">
-	/*.mu-drawer-c.mu-paper.mu-drawer {
-		color: #fff;
-		background-color: #000;
+	.mu-menu-destop .mu-menu-item {
+	    padding: 0 15px !important;
 	}
-	.mu-item-title-row .mu-item-title {
-		color: #fff;
-	}*/
+	.mu-menu-destop {
+		padding: 0 !important;
+	}
 	.demo-menu {
 	  display: block;
 	}
 	.mu-menu {
 	  margin: 0 auto;
+	}
+	.nav-left-top {
+		display: flex;
+		flex-direction: column;
+		background: #03a9f4;
+	}
+	.avater {
+		display: flex;
+		flex-direction: row;
+		color: #fff;
+		align-items: center;
+	}
+	._second {
+		display: flex;
+		flex-direction: row;
+	}
+	._second-item {
+		flex: 1;
+		display: flex;
+		color: #fff;
+	}
+	.nav-left-home {
+		display: flex;
+		background: #eee;
+		color: #03a9f4;
+	}
+	._my {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	._txt {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 14px;
+	}
+	.themes-item {
+		padding: 10px 0;
+		color: #000;
 	}
 </style>

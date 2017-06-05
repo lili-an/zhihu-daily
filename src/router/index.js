@@ -6,8 +6,9 @@ import share from '@/components/share'
 import personal from '@/components/personal'
 import signin from '@/components/signIn'
 import register from '@/components/register'
-import hello from '@/components/Hello'
-import detail from '@/components/detail'
+import newsDetail from '@/components/newsDetail'
+import comments from '@/components/comments'
+import othersDetails from '@/components/othersDetails'
 
 Vue.use(Router)
 
@@ -23,7 +24,17 @@ export default new Router({
     {
       path: '/home/:id',
       name: 'homeD',
-      component: hello,
+      component: newsDetail,
+    },
+    {
+      path: '/comments/:id',
+      name: 'comments',
+      component: comments,
+    },
+    {
+      path: '/othersDetails/:id',
+      name: 'othersDetails',
+      component: othersDetails,
     },
     {
       path: '/signin',
@@ -39,11 +50,6 @@ export default new Router({
       path: '/customized',
       name: 'customized',
       component: customized
-    },
-    {
-      path: '/customized/detail',
-      name: 'detail',
-      component: detail
     },
     {
       path: '/share',

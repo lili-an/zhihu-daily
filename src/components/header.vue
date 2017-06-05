@@ -1,33 +1,34 @@
 <template lang="html">
-<mu-appbar title="首页" class="appbar-fixed">
-<!-- <span>{{ count }}</span> -->
-  <mu-icon-button icon='menu' slot="left" v-touch:tap="toggle"/>
-  <mu-icon-button icon="search" slot="right"/>
-  <mu-icon-button icon="more_vert" slot="right"/>
-</mu-appbar>
-
-<!-- <mu-appbar title="首页" class="appbar-fixed">
-  <mu-icon-button icon="menu" slot="left" v-touch:tap="toggle"/>
-  <mu-icon-button icon="search" slot="right"/>
-  <mu-icon-button icon="more_vert" slot="right"/>
-</mu-appbar> -->
+	<mu-appbar class="appbar-fixed" :class="{ 'nightColor': active }">
+	  <mu-icon-button icon='menu' slot="left" v-touch:tap="toggle"/>
+	  <div class="_title" slot="left">首页</div>
+	  <mu-icon-button icon="notifications" slot="right"/>
+	  <mu-icon-button icon="more_vert" slot="right" @click="setNightColor"/>
+	</mu-appbar>
 </template>
 
 <script type="text/javascript">
 
 	export default {
+		data() {
+			return {
+
+			}
+		},
 		computed: {
-		    count () {
-		      return this.$store.state.count
+		    active () {
+		      return this.$store.state.active
 		    }
 		  },
 		  methods: {
  		    toggle () {
 		      this.$store.dispatch('increments').then(() => {
-				  console.log(this.$store.state.count)
 				})
 		      this.$store.dispatch('changeFlag')
-		    }
+		    },
+		    setNightColor: function() {
+		    	this.$store.dispatch('changeActive')
+		    },
 		  },
 	}
 </script>
@@ -37,5 +38,12 @@
 	    top: 0;
 	    -webkit-transition: all .45s cubic-bezier(.23,1,.32,1);
 	    transition: all .45s cubic-bezier(.23,1,.32,1);
+	}
+	._title {
+		margin-left: 15px;
+		font-size: 18px;
+	}
+	.nightColor {
+		background: #000;
 	}
 </style>

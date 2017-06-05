@@ -9,7 +9,7 @@
         <router-view class="m-view"></router-view>
       </transition> 
     </div>  
-    <m-footer v-show="showHF"></m-footer>
+    <!-- <m-footer v-show="showHF"></m-footer> -->
   </div>
 </template>
 
@@ -48,11 +48,8 @@ export default {
 
 <style lang="css">
 #app {
-  /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 #content {
   margin-top: 56px;
@@ -78,6 +75,7 @@ html, body{
   -webkit-appearance: none;
   -webkit-overflow-scrolling: touch;
   font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;
+  background: #f3f3f3;
 }
 html::-webkit-scrollbar,
 body::-webkit-scrollbar{
