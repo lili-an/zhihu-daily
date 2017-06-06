@@ -12,7 +12,9 @@
 	    <div class="item-wrap">
 	        <div class="item-title">
 	        	<div class="_edi">主编</div>
-	        	<img :src="attachImageUrl(editor.avatar)" v-for="(editor,index) in otherThemesList.editors" :key="editor.id">  	
+            <a :href="editor.url" v-for="(editor,index) in otherThemesList.editors" :key="editor.id">
+	        	  <img :src="attachImageUrl(editor.avatar)">
+            </a>  	
 	        </div>
 	        <div class="item-content" v-for="(otherThemesItem,index) in otherThemesList.stories" :key="otherThemesItem.id">
 	          <router-link :to="{ name: 'homeD', params: { id: otherThemesItem.id }}" class="routerA"></router-link>
