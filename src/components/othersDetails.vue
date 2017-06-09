@@ -41,7 +41,6 @@ export default {
 	  },
     created() {
       this.$store.state.showHF = false;
-      console.log(this.$store.state.showHF)
     },
 	  mounted() {
 	  	this.$nextTick(function() {
