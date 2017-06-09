@@ -8,6 +8,7 @@
 </template>
 
 <script type="text/javascript">
+import { mapState, mapGetters, mapActions } from "Vuex";  
 
 	export default {
 		data() {
@@ -16,19 +17,15 @@
 			}
 		},
 		computed: {
-		    active () {
-		      return this.$store.state.active
-		    }
+			...mapState({
+		      active: state => state.active,
+		    })
 		  },
 		  methods: {
- 		    toggle () {
-		      this.$store.dispatch('increments').then(() => {
-				})
-		      this.$store.dispatch('changeFlag')
-		    },
-		    setNightColor: function() {
-		    	this.$store.dispatch('changeActive')
-		    },
+		  	...mapActions({   
+                toggle: 'changeFlag',  
+                setNightColor: 'changeActive',  
+            }) 
 		  },
 	}
 </script>

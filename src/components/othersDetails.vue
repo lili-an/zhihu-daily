@@ -27,6 +27,7 @@
 
 <script>
 import axios from 'axios'
+import { mapState, mapGetters, mapActions } from "Vuex";  
 export default {
 	  data () {
 	    return {
@@ -34,17 +35,23 @@ export default {
 	    }
 	  },
 	  computed: {
+      // ...mapState({
+      //   showHF: state => state.showHF = false
+      // })
 	  },
+    created() {
+      this.$store.state.showHF = false;
+      console.log(this.$store.state.showHF)
+    },
 	  mounted() {
 	  	this.$nextTick(function() {
 	  		this.getOtherThemesList();
-	  		this.$store.state.showHF = false
 	  	})
 	  },
 	  methods: {
-	    toggle (flag) {    	
-			this.$store.dispatch('changeFlag')
-	    },
+      ...mapActions({
+        toggle: 'changeFlag'
+      }),
 	    getOtherThemesList: function () {
 	    	let id = this.$route.params.id
 	    	axios.get('https://zhihu-daily.leanapp.cn/api/v1/themes/'+id)

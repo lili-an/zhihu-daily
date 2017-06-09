@@ -42,6 +42,7 @@
 
 <script>
 import axios from 'axios'
+import { mapState, mapGetters, mapActions } from "Vuex";  
 export default {
 	  data () {
 	    return {
@@ -49,15 +50,11 @@ export default {
 	    }
 	  },
 	  computed: {
-	    open () {
-	      return this.$store.state.open
-	    },
-	    docked () {
-	      return this.$store.state.docked
-	    },
-	    usersOff() {
-	      return this.$store.state.usersOff
-	    },
+	  	...mapState({
+	  		open: state => state.open,
+	  		docked: state => state.docked,
+	  		usersOff: state => state.usersOff,
+	  	})
 	  },
 	  mounted() {
 	  	this.$nextTick(function() {
@@ -65,9 +62,9 @@ export default {
 	  	})
 	  },
 	  methods: {
-	    toggle (flag) {    	
-			this.$store.dispatch('changeFlag')
-	    },
+	  	...mapActions({
+	  		toggle: 'changeFlag',
+	  	}),
 	    getThemesList: function (){
 	        axios.get('https://zhihu-daily.leanapp.cn/api/v1/themes')
 	          .then(res => {
@@ -80,7 +77,7 @@ export default {
 	    	if(this.$route.params.id !== id) {
 	          	 // window.location.reload();
 	          }  
-            this.$router.replace('/othersDetails/'+id)     	
+            this.$router.replace('/othersDetails/'+id)  	
 	    	this.$store.dispatch('changeFlag')
 	    },
 	    routrHome: function() {

@@ -22,6 +22,7 @@
 <script>
 import axios from 'axios'
 import { Toast } from 'mint-ui';
+import { mapState, mapGetters, mapActions } from "Vuex";  
   export default {
     data() {
       return {
@@ -33,9 +34,12 @@ import { Toast } from 'mint-ui';
       }
     },
     computed: {
-      active () {
-        return this.$store.state.active
-      }
+      ...mapState({
+        active: state => state.active,
+      })
+      // active () {
+      //   return this.$store.state.active
+      // }
     },
     mounted() {
        this.$nextTick(function() {
@@ -89,7 +93,7 @@ import { Toast } from 'mint-ui';
         Toast('收藏成功')
       },
       back: function() {
-        this.$router.replace('/')
+        this.$router.replace('/');
       }
     }
   }

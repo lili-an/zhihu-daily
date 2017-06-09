@@ -2,3 +2,15 @@
 
 // export const getShow = state => state.show
 // export const getArticles = state => state.articles
+
+import * as state from './state'
+
+const getters = {
+	showHF: state => state.showHF,
+	loading: state => state.loading
+}
+
+// export const showHF = state => state.showHF
+// export const loading = state => state.loading
+
+console.log(state.showHF)

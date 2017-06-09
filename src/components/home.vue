@@ -26,9 +26,9 @@
 
 <script>
 import axios from 'axios'
-import { Indicator } from 'mint-ui';
+import { Indicator } from 'mint-ui'
+import { mapState, mapGetters, mapActions } from 'Vuex'
 export default {
-
   data () {
     return {
       date: '',
@@ -37,12 +37,10 @@ export default {
     }
   },
   computed: {
-  	  limit() {
-        return this.$store.state.limit
-      },
-      active () {
-        return this.$store.state.active
-      }
+      ...mapState({
+        limit: state => state.limit,
+        active: state => state.active,
+      })
     },
   mounted() {
      this.$nextTick(function() {

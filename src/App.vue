@@ -4,7 +4,6 @@
     <m-left></m-left>
     <div id="content">
       <m-loading v-show="loading"></m-loading>
-      <m-toast></m-toast>
       <transition name="router-fade" mode="out-in">
         <router-view class="m-view"></router-view>
       </transition> 
@@ -14,34 +13,24 @@
 </template>
 
 <script>
-// import { mapState } from './store/index'
-import mToast from './components/toast'
 import mLoading from './components/loading'
 import mHeader from './components/header'  //引入组件和注册
 import mLeft from './components/navLeft'
 import mFooter from './components/footer'
 import './assets/sass/reset.css'  //css link方式引入会报错
+import { mapState, mapGetters, mapActions } from 'Vuex' 
 export default {
-  name: 'app',
-  data() {
-    return {
-      
-    }
-  },
   computed: {
-    showHF() {
-      return this.$store.state.showHF
-    },
-    loading() {
-      return this.$store.state.loading
-    }
+    ...mapState({
+      showHF: state => state.showHF,
+      loading: state => state.loading
+    })
   },
   components: {
     mHeader,
     mLeft,
     mFooter,
     mLoading,
-    mToast,
   }
 }
 </script>
