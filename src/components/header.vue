@@ -8,7 +8,7 @@
 </template>
 
 <script type="text/javascript">
-import { mapState, mapGetters, mapActions } from "Vuex";  
+import { mapState, mapGetters, mapActions } from "vuex";  
 
 	export default {
 		data() {

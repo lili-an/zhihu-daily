@@ -198,7 +198,7 @@ import { Toast } from 'mint-ui';
     	padding: 3px;
 	}
 	.right-middle {
-		margin: 12px 0 !important;
+		margin: 5px 0 !important;
 		font-size: 16px;
 		color: #000;
 	}

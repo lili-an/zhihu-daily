@@ -5,7 +5,7 @@
 		  <mu-paper class="demo-menu">
 		    <mu-menu desktop>
 		      <div v-if="usersOff == false">
-		    	登陆成功
+		    	登录成功
 		      </div>
 		      <div v-else>
 		        <div class="nav-left-top">
@@ -15,7 +15,7 @@
 		    			<div>请登录</div>		    			
 		    		</div>
 		    		<div class="_second">
-		    			<div class="_second-item">
+		    			<div class="_second-item" @click="collectionList">
 		    				<mu-icon-button icon="star" slot="left"/>
 		      				<div class="_my">我的收藏</div>
 		    			</div>
@@ -42,7 +42,7 @@
 
 <script>
 import axios from 'axios'
-import { mapState, mapGetters, mapActions } from "Vuex";  
+import { mapState, mapGetters, mapActions } from "vuex";  
 export default {
 	  data () {
 	    return {
@@ -73,10 +73,13 @@ export default {
 	          .catch(err => console.log(err))
 
 	    },
+	    collectionList: function() {
+	    	
+	    },
 	    getOthers: function (id) {
-	    	if(this.$route.params.id !== id) {
-	          	 // window.location.reload();
-	          }  
+	    	// if(this.$route.params.id !== id) {
+	     //      	 window.location.reload();
+	     //      }  
             this.$router.replace('/othersDetails/'+id)  	
 	    	this.$store.dispatch('changeFlag')
 	    },

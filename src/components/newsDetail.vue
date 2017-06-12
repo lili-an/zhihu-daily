@@ -22,7 +22,7 @@
 <script>
 import axios from 'axios'
 import { Toast } from 'mint-ui';
-import { mapState, mapGetters, mapActions } from "Vuex";  
+import { mapState, mapGetters, mapActions } from "vuex";  
   export default {
     data() {
       return {
@@ -101,6 +101,7 @@ import { mapState, mapGetters, mapActions } from "Vuex";
 
 <style lang="css" scoped>
 @import "/static/css/zhihu_css.css";
+
 .appbar-fixed {
     position: fixed;
       top: 0;

@@ -17,9 +17,9 @@ import mLoading from './components/loading'
 import mHeader from './components/header'  //引入组件和注册
 import mLeft from './components/navLeft'
 import mFooter from './components/footer'
-import './assets/sass/reset.css'  //css link方式引入会报错
-import { mapState, mapGetters, mapActions } from 'Vuex' 
+import { mapState, mapGetters, mapActions } from 'vuex' 
 export default {
+  name: 'zhihu_daily',
   computed: {
     ...mapState({
       showHF: state => state.showHF,
@@ -36,6 +36,8 @@ export default {
 </script>
 
 <style lang="css">
+/*@import './assets/sass/reset.css';*/
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

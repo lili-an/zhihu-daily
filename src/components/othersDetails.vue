@@ -19,7 +19,7 @@
 	        <div class="item-content" v-for="(otherThemesItem,index) in otherThemesList.stories" :key="otherThemesItem.id">
 	          <router-link :to="{ name: 'homeD', params: { id: otherThemesItem.id }}" class="routerA"></router-link>
 	          <p class="_text">{{otherThemesItem.title}}</p>
-	          <img :src="attachImageUrl(otherThemesItem.images)" :alt="otherThemesItem.title">
+	          <img :src="attachImageUrl(isImgBlank(otherThemesItem.images))" :alt="otherThemesItem.title">
 	        </div>
       	</div>
 	</div>
@@ -27,7 +27,7 @@
 
 <script>
 import axios from 'axios'
-import { mapState, mapGetters, mapActions } from "Vuex";  
+import { mapState, mapGetters, mapActions } from "vuex";  
 export default {
 	  data () {
 	    return {
@@ -60,15 +60,20 @@ export default {
 	          .catch(err => console.log(err))
 
 	    },
+      //判断图片是否为空
+      isImgBlank: function(imgUrl) {
+        if(imgUrl === undefined) {
+          return imgUrl = 'https://images.weserv.nl/?url=pic1.zhimg.com/v2-4a179366fa7fa7ec7701425207f9930c.jpg'
+        }else{
+          return imgUrl[0]
+        }
+      },
 	    // 修改图片链接
-	      attachImageUrl: function(srcUrl) {
-	      	if(typeof srcUrl == 'object' || typeof srcUrl == 'undefined') {
-	      		return srcUrl = 'https://images.weserv.nl/?url=pic1.zhimg.com/v2-4a179366fa7fa7ec7701425207f9930c.jpg'
-	      	}
-	        if (srcUrl !== undefined) {
-	          return srcUrl.replace(/http\w{0,1}:\/\/p/g, 'https://images.weserv.nl/?url=p');
-	        }
-	      },
+      attachImageUrl: function(srcUrl) {
+        if (srcUrl !== undefined) {
+          return srcUrl.replace(/http\w{0,1}:\/\/p/g, 'https://images.weserv.nl/?url=p');
+        }
+      },
 	  },
  
 }
