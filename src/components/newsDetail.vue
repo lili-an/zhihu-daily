@@ -101,6 +101,7 @@ import { mapState, mapGetters, mapActions } from "vuex";
 
 <style lang="css" scoped>
 @import "/static/css/zhihu_css.css";
+
 .appbar-fixed {
     position: fixed;
       top: 0;

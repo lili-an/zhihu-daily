@@ -15,7 +15,7 @@
 		    			<div>请登录</div>		    			
 		    		</div>
 		    		<div class="_second">
-		    			<div class="_second-item">
+		    			<div class="_second-item" @click="collectionList">
 		    				<mu-icon-button icon="star" slot="left"/>
 		      				<div class="_my">我的收藏</div>
 		    			</div>
@@ -72,6 +72,9 @@ export default {
 	          })
 	          .catch(err => console.log(err))
 
+	    },
+	    collectionList: function() {
+	    	
 	    },
 	    getOthers: function (id) {
 	    	// if(this.$route.params.id !== id) {

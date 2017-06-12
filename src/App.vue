@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style lang="css">
-@import './assets/sass/reset.css'
+/*@import './assets/sass/reset.css';*/
 
 #app {
   -webkit-font-smoothing: antialiased;
