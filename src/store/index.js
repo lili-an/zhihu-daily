@@ -74,7 +74,6 @@ const actions = {
 	loadLatestNews: function({commit}) {
 				axios.get('https://zhihu-daily.leanapp.cn/api/v1/last-stories')
 			.then(res => {
-                // console.log(res.data.STORIES.top_stories)
                 commit('LOAD_LATEST_NEWS', {list: res.data.STORIES.top_stories})
             }).catch(err => console.log(err))
 	},

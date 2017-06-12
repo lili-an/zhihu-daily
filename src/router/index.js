@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home'
 import customized from '@/components/customized'
-import share from '@/components/share'
 import personal from '@/components/personal'
 import signin from '@/components/signIn'
 import register from '@/components/register'
@@ -50,11 +49,6 @@ export default new Router({
       path: '/customized',
       name: 'customized',
       component: customized
-    },
-    {
-      path: '/share',
-      name: 'share',
-      component: share
     },
     {
       path: '/personal',

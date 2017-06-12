@@ -22,7 +22,7 @@
 <script>
 import axios from 'axios'
 import { Toast } from 'mint-ui';
-import { mapState, mapGetters, mapActions } from "Vuex";  
+import { mapState, mapGetters, mapActions } from "vuex";  
   export default {
     data() {
       return {
