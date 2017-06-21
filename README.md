@@ -1,3 +1,5 @@
+[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
+
 # zhihu-daily
 
 > 这是一个基于Vue全家桶开发的知乎日报WebApp，页面样式主要参考Android版知乎日报APP。
