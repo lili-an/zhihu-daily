@@ -5,8 +5,7 @@
 > 这是一个基于Vue全家桶开发的知乎日报WebApp，页面样式主要参考Android版知乎日报APP。
 
 ## 技术栈
-vue2 + vue-router + axios + vuex + vue-cli 
-mint-ui + flex
+vue2 + vue-router + axios + vuex + mint-ui + flex
 
 ## 在线Demo
 [点我在线预览](https://lili-an.github.io/zhihu-daily/)
