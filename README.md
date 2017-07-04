@@ -10,7 +10,7 @@ vue2 + vue-router + axios + vuex + mint-ui + flex
 ## 在线Demo
 [点我在线预览](https://lili-an.github.io/zhihu-daily/)
 
-## Build Setup
+## 命令
 
 ``` bash
 # install dependencies
