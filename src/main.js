@@ -18,7 +18,7 @@ Vue.use(MuseUI)
 Vue.use(Mint)
 
 Vue.config.productionTip = false
-Vue.prototype.$axios = axios
+// Vue.prototype.$axios = axios
 
 /* eslint-disable no-new */
 new Vue({
