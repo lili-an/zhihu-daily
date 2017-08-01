@@ -35,16 +35,16 @@ export default {
 	    }
 	  },
 	  computed: {
-      // ...mapState({
-      //   showHF: state => state.showHF = false
-      // })
+      ...mapState({
+        changeRouter: state => state.changeRouter
+      })
 	  },
     created() {
       this.$store.state.showHF = false;
     },
 	  mounted() {
 	  	this.$nextTick(function() {
-	  		this.getOtherThemesList();
+	  		this.getOtherThemesList();     
 	  	})
 	  },
 	  methods: {
@@ -52,7 +52,7 @@ export default {
         toggle: 'changeFlag'
       }),
 	    getOtherThemesList: function () {
-	    	let id = this.$route.params.id
+	    	let id = this.$route.params.id;
 	    	axios.get('https://zhihu-daily.leanapp.cn/api/v1/themes/'+id)
 	          .then(res => {
 	            this.otherThemesList = res.data.THEMEDES;

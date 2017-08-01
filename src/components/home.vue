@@ -54,8 +54,13 @@ export default {
       axios.get('https://zhihu-daily.leanapp.cn/api/v1/last-stories')
         .then(res => {
             let stories = res.data.STORIES;
+            let y = stories.date.substring(0,4);
+            let m = stories.date.substring(4,6);
+            let d = stories.date.substring(6,8);
             this.megs = stories;
-            this.date = (parseInt(stories.date)-1).toString();
+            if(d == '01') {
+              this.date = y + '0' + (m-1) + '29';
+            }
             axios.get('https://zhihu-daily.leanapp.cn/api/v1/before-stories/'+ this.date)
               .then(res => {
                   this.beforeMegs = res.data.STORIES;

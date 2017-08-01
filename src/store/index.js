@@ -28,7 +28,8 @@ const state = {
 	movieList: [],
 	users:{},
 	usersOff: true,
-	active: false
+	active: false,
+	changeRouter: false
 }
 
 const mutations = {

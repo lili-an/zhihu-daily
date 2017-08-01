@@ -42,6 +42,7 @@
 
 <script>
 import axios from 'axios'
+import { Indicator } from 'mint-ui'
 import { mapState, mapGetters, mapActions } from "vuex";  
 export default {
 	  data () {
@@ -77,9 +78,13 @@ export default {
 	    	
 	    },
 	    getOthers: function (id) {
-	    	// if(this.$route.params.id !== id) {
-	     //      	 window.location.reload();
-	     //      }  
+	    	// this.$store.state.changeRouter = true;
+	    	Indicator.open();
+	    	setTimeout(function() {
+	    		window.location.reload();
+	    		Indicator.close();
+	    	},450)       	
+	    	this.$store.state.changeRouter = true;  
             this.$router.replace('/othersDetails/'+id)  	
 	    	this.$store.dispatch('changeFlag')
 	    },
